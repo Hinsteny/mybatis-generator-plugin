@@ -3,7 +3,7 @@ Mybatis Generator  Gradle Plugin
 
 
 [![Travis Build Status](https://img.shields.io/travis/Hinsteny/mybatis-generator-plugin.svg)](https://travis-ci.org/Hinsteny/mybatis-generator-plugin)
-
+[![Codecov](https://codecov.io/gh/Hinsteny/mybatis-generator-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/Hinsteny/mybatis-generator-plugin)
 
 ## Introduction
 
@@ -27,7 +27,14 @@ buildscript {
   }
 }
 
-apply plugin: "org.hisoka.gradle.mybatis-generator-plugin"
+plugins {
+    id 'java'
+    id 'eclipse'
+    id "org.hisoka.gradle.mybatis-generator-plugin" version "0.0.1"
+
+}
+
+/*apply plugin: "org.hisoka.gradle.mybatis-generator-plugin"*/
 
 dependencies {
     mybatisGenerator('org.mybatis.generator:mybatis-generator-core:1.3.7')

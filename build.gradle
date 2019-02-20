@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+
+    id 'groovy'
+
+    id 'idea'
+
+    // Developing java gradle plugin
+    id 'java-gradle-plugin'
+
+    // Publishing publicly
+    id 'com.gradle.plugin-publish' version '0.10.1'
+
+    // Publishing to Artifactory
+    id 'maven-publish'
+
+}
+
+group 'org.hisoka.gradle'
+version '0.0.1'
+description "Mybatis Generator Gradle Plugin"
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // compile
+    compile gradleApi()
+
+    // test compile
+    testCompile gradleTestKit()
+    testCompile 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "${project.group}"
+            artifactId = "${project.name}"
+            version = "${project.version}"
+        }
+    }
+    repositories {
+        maven {
+            name = "LocalMavenGradlePlugin"
+            // change to point to your repo, e.g. http://my.org/repo
+            url = "E:/dependency/gradle-plugins"
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/Hinsteny/mybatis-generator-plugin.git'
+    vcsUrl = 'https://github.com/Hinsteny/mybatis-generator-plugin.git'
+    description = "${project.description}"
+    tags = ['mybatis', 'generator', 'mybatis generator']
+
+    plugins {
+        MybatisGenerator {
+            id = "${project.group}.${project.name}"
+            displayName = 'Mybatis Generator Gradle Plugin'
+        }
+    }
+}

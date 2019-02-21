@@ -14,7 +14,13 @@ plugins {
     // Publishing to Artifactory
     id 'maven-publish'
 
-    id 'jacoco'
+}
+
+// java code coverage lib
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.2"
 }
 
 group 'org.hisoka.gradle'
